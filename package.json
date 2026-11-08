@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "oxfmt"
+    "format": "oxfmt",
+    "eval": "node --env-file-if-exists=.env.local evals/run.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",

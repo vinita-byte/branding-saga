@@ -1,0 +1,12 @@
+[
+  { "id": 1, "prompt": "A cheeky Gen Z snack brand with weird flavours", "expected": "Jester" },
+  { "id": 2, "prompt": "A no-nonsense corporate law firm", "expected": "Ruler" },
+  { "id": 3, "prompt": "An eco-friendly outdoor gear company", "expected": "Explorer" },
+  { "id": 4, "prompt": "A luxury skincare line for women", "expected": "Lover" },
+  { "id": 5, "prompt": "A kids' educational coding app", "expected": "Creator" },
+  { "id": 6, "prompt": "A budget-friendly everyday grocery store", "expected": "Everyman" },
+  { "id": 7, "prompt": "A mental wellness and meditation app", "expected": "Caregiver" },
+  { "id": 8, "prompt": "A rebellious streetwear label", "expected": "Outlaw" },
+  { "id": 9, "prompt": "A finance education platform for beginners", "expected": "Sage" },
+  { "id": 10, "prompt": "A high-performance sports drink", "expected": "Hero" }
+]
