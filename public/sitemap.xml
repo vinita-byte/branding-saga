@@ -3,72 +3,72 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://brandingsaga.com/</loc>
+    <loc>https://branding-saga.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/about</loc>
+    <loc>https://branding-saga.vercel.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/innocent</loc>
+    <loc>https://branding-saga.vercel.app/innocent</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/sage</loc>
+    <loc>https://branding-saga.vercel.app/sage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/explorer</loc>
+    <loc>https://branding-saga.vercel.app/explorer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/hero</loc>
+    <loc>https://branding-saga.vercel.app/hero</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/outlaw</loc>
+    <loc>https://branding-saga.vercel.app/outlaw</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/magician</loc>
+    <loc>https://branding-saga.vercel.app/magician</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/everyman</loc>
+    <loc>https://branding-saga.vercel.app/everyman</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/lover</loc>
+    <loc>https://branding-saga.vercel.app/lover</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/jester</loc>
+    <loc>https://branding-saga.vercel.app/jester</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/caregiver</loc>
+    <loc>https://branding-saga.vercel.app/caregiver</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/ruler</loc>
+    <loc>https://branding-saga.vercel.app/ruler</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://brandingsaga.com/creator</loc>
+    <loc>https://branding-saga.vercel.app/creator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

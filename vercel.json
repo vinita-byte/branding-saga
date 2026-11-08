@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist",
+  "trailingSlash": false,
+  "rewrites": [{ "source": "/((?!assets/|.*\\.).*)", "destination": "/index.html" }],
+  "headers": [
+    { "source": "/(llms|llms-full|robots).txt", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }] }
+  ]
+}

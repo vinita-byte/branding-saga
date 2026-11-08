@@ -2,7 +2,7 @@
   "title": "branding saga",
   "description": "Explore archetypes through dedicated pages of curated ideas and insights, helping brand builders find inspiration and shape distinctive brand identities.",
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,

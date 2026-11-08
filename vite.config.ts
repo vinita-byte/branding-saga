@@ -5,6 +5,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 import siteConfiguration from './.figma/make/site.json'
+import { prerenderPlugin } from './prerender'
 
 
 // Vite config — https://vitejs.dev/config/
@@ -26,6 +27,7 @@ react(),
       figmaReactRefreshBoundaryFallback(),
       figmaMakeKitPlugin({ storiesGlob: '/src/**/*.stories.{ts,tsx,js,jsx}' }),
       figmaLinkedPackageSourcemaps(),
+      prerenderPlugin(),
     ],
     resolve: {
       alias: {

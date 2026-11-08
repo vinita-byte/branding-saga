@@ -2,7 +2,7 @@
 
 > Branding Saga is a visual and verbal playbook for the 12 classic brand archetypes. It helps designers, copywriters, strategists, and brand builders translate archetypal motivations into practical identity systems.
 
-Canonical site: https://brandingsaga.com/
+Canonical site: https://branding-saga.vercel.app/
 Language: English
 Content type: Educational brand-strategy reference
 Audience: Designers, copywriters, brand strategists, founders, and marketers
@@ -18,33 +18,34 @@ Each archetype has a dedicated page with two reference sections:
 
 ### Independence
 
-- [Innocent](https://brandingsaga.com/innocent): Happiness, honesty, optimism, and simplicity. Mantra: "Keep it simple, keep it happy."
-- [Sage](https://brandingsaga.com/sage): Truth, knowledge, evidence, and clarity. Mantra: "Know better."
-- [Explorer](https://brandingsaga.com/explorer): Freedom, discovery, authenticity, and adventure. Mantra: "Go further."
+- [Innocent](https://branding-saga.vercel.app/innocent): Happiness, honesty, optimism, and simplicity. Mantra: "Keep it simple, keep it happy."
+- [Sage](https://branding-saga.vercel.app/sage): Truth, knowledge, evidence, and clarity. Mantra: "Know better."
+- [Explorer](https://branding-saga.vercel.app/explorer): Freedom, discovery, authenticity, and adventure. Mantra: "Go further."
 
 ### Mastery
 
-- [Hero](https://brandingsaga.com/hero): Courage, discipline, achievement, and determination. Mantra: "Prove it."
-- [Outlaw](https://brandingsaga.com/outlaw): Revolution, defiance, disruption, and freedom from convention. Mantra: "Break the rules."
-- [Magician](https://brandingsaga.com/magician): Transformation, vision, imagination, and wonder. Mantra: "Make the impossible real."
+- [Hero](https://branding-saga.vercel.app/hero): Courage, discipline, achievement, and determination. Mantra: "Prove it."
+- [Outlaw](https://branding-saga.vercel.app/outlaw): Revolution, defiance, disruption, and freedom from convention. Mantra: "Break the rules."
+- [Magician](https://branding-saga.vercel.app/magician): Transformation, vision, imagination, and wonder. Mantra: "Make the impossible real."
 
 ### Belonging
 
-- [Everyman](https://brandingsaga.com/everyman): Belonging, relatability, inclusion, and everyday connection. Mantra: "One of us."
-- [Lover](https://brandingsaga.com/lover): Intimacy, passion, sensory connection, and indulgence. Mantra: "Feel everything."
-- [Jester](https://brandingsaga.com/jester): Joy, wit, spontaneity, and playful irreverence. Mantra: "Life's too short to be boring."
+- [Everyman](https://branding-saga.vercel.app/everyman): Belonging, relatability, inclusion, and everyday connection. Mantra: "One of us."
+- [Lover](https://branding-saga.vercel.app/lover): Intimacy, passion, sensory connection, and indulgence. Mantra: "Feel everything."
+- [Jester](https://branding-saga.vercel.app/jester): Joy, wit, spontaneity, and playful irreverence. Mantra: "Life's too short to be boring."
 
 ### Stability
 
-- [Caregiver](https://brandingsaga.com/caregiver): Protection, empathy, trust, and support. Mantra: "We've got you."
-- [Ruler](https://brandingsaga.com/ruler): Order, authority, prestige, and excellence. Mantra: "Lead, don't follow."
-- [Creator](https://brandingsaga.com/creator): Imagination, originality, craft, and enduring creation. Mantra: "Make something that matters."
+- [Caregiver](https://branding-saga.vercel.app/caregiver): Protection, empathy, trust, and support. Mantra: "We've got you."
+- [Ruler](https://branding-saga.vercel.app/ruler): Order, authority, prestige, and excellence. Mantra: "Lead, don't follow."
+- [Creator](https://branding-saga.vercel.app/creator): Imagination, originality, craft, and enduring creation. Mantra: "Make something that matters."
 
 ## Important pages
 
-- [Home and complete archetype index](https://brandingsaga.com/)
-- [About brand archetypes and how to use this playbook](https://brandingsaga.com/about)
-- [XML sitemap](https://brandingsaga.com/sitemap.xml)
+- [Home and complete archetype index](https://branding-saga.vercel.app/)
+- [About brand archetypes and how to use this playbook](https://branding-saga.vercel.app/about)
+- [XML sitemap](https://branding-saga.vercel.app/sitemap.xml)
+- [Full content in plain text (every palette, typeface, word bank, tagline and hook)](https://branding-saga.vercel.app/llms-full.txt)
 
 ## Citation guidance
 
