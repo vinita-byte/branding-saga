@@ -20,7 +20,7 @@ const BASE = (args.base || process.env.EVAL_BASE_URL || 'https://branding-saga.v
 const RUNS = Number(args.runs || 3)
 const ONLY = args.only ? new Set(args.only.split(',').map(Number)) : null
 const PASS_SCORE = 4
-const JUDGE_MODEL = process.env.JUDGE_MODEL || 'llama-3.3-70b-versatile'
+const JUDGE_MODEL = process.env.JUDGE_MODEL || 'openai/gpt-oss-120b'
 const GROQ_API_KEY = process.env.GROQ_API_KEY
 
 if (!GROQ_API_KEY) {

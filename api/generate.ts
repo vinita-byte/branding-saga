@@ -2,7 +2,7 @@
 // Picks one of the 12 Branding Saga archetypes for the brief and returns a tailored brand kit.
 import { archetypes } from '../src/data.js'
 
-const MODEL = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile'
+const MODEL = process.env.GROQ_MODEL || 'openai/gpt-oss-120b'
 const MAX_BRIEF = 500
 
 // Compact grounding: one block per archetype, built from the same data the site renders.
