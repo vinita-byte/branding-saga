@@ -1,35 +1,33 @@
 // POST /api/generate  { "brief": "A cheeky Gen Z snack brand with weird flavours" }
 // Picks one of the 12 Branding Saga archetypes for the brief and returns a tailored brand kit.
-//
-// Two steps: a careful, low-temperature archetype pick, then the kit written for that pick.
-// Keeping the decision separate from the creative writing makes the pick consistent across runs.
-import { archetypes, type Archetype } from '../src/data.js'
+import { archetypes } from '../src/data.js'
 
 const MODEL = process.env.GROQ_MODEL || 'openai/gpt-oss-120b'
 const MAX_BRIEF = 500
-const NAMES = archetypes.map((a) => a.name)
 
-// Strategy grounding for the pick, from the same data the site renders.
-const PICK_GROUNDING = archetypes
+// Compact grounding: one block per archetype, built from the same data the site renders.
+const GROUNDING = archetypes
   .map(
     (a) =>
-      `${a.name} (${a.group}). Promise: ${a.promise}. Desire: ${a.desire}. Fear: ${a.fear}. ` +
-      `Mantra: ${a.mantra}. Example: ${a.example}, ${a.exampleNote}`,
+      `${a.name} (${a.group}). Mantra: ${a.mantra}. Desire: ${a.desire}. Fear: ${a.fear}. Voice: ${a.voice} ` +
+      `Fonts: ${a.display} / ${a.body}. Palette: ${a.colors.map(([n, hex]) => `${n} ${hex}`).join(', ')}.`,
   )
   .join('\n')
 
-const PICK_SYSTEM = `You are Branding Saga, a brand strategist who works from the 12 classic brand archetypes:
-${PICK_GROUNDING}
+const SYSTEM = `You are Branding Saga, a brand strategist who works from the 12 classic brand archetypes.
+Reference for each archetype:
+${GROUNDING}
 
-Choose the single archetype that best fits the brand brief.
-How to decide:
-1. Name what the product or service fundamentally gives its customer: the core promise the brand sells.
-2. Match that core promise to the archetype whose Promise and Desire it fulfils, using the real world examples as anchors.
-3. Ignore secondary traits when deciding. Tone, values (such as sustainability or safety), price level and who the audience is shape how the brand speaks, not which archetype it is.
-4. Compare your top two candidates on step 1 alone, and pick the stronger.
-Reply with JSON only: {"archetype": "one of ${NAMES.join(', ')}", "runnerUp": "", "rationale": "one or two sentences naming the core promise and why it fits"}`
-
-const KIT_SHAPE = `{
+Given a brand brief, choose the single best fitting archetype from the list above and create a brand kit tailored to the brief.
+Rules:
+- "archetype" must be exactly one of: ${archetypes.map((a) => a.name).join(', ')}.
+- Fonts must be real families available on Google Fonts. Start from the archetype's fonts and change them only if the brief clearly needs it.
+- The palette has exactly 5 colours, each a 6 digit hex code like #1A2B3C, with roles Canvas, Primary, Secondary, Accent, Highlight.
+- Write copy for this specific brand, not generic archetype copy.
+Reply with JSON only, in this exact shape:
+{
+  "archetype": "",
+  "rationale": "one or two sentences on why this archetype fits the brief",
   "mantra": "",
   "visual": {
     "keyVisual": "",
@@ -49,35 +47,17 @@ const KIT_SHAPE = `{
   }
 }`
 
-function kitSystem(a: Archetype) {
-  return `You are Branding Saga, a brand strategist. This brand's archetype is ${a.name}.
-Branding Saga's ${a.name} playbook:
-Mantra: ${a.mantra}. Promise: ${a.promise}. Voice: ${a.voice}
-Adjectives: ${a.adjectives.join(', ')}. Word bank: ${a.words.join(', ')}.
-Fonts: ${a.display} (display) / ${a.body} (body). Palette: ${a.colors.map(([n, hex, role]) => `${role} ${n} ${hex}`).join(', ')}.
-Shapes: ${a.shapes.join(', ')}. Textures: ${a.textures.join(', ')}. Motion: ${a.motion}
-Visual do: ${a.visualDo} Copy do: ${a.copyDo}
-
-Create a ${a.name} brand kit tailored to the brief.
-Rules:
-- Fonts must be real families available on Google Fonts. Start from the playbook fonts, and swap them only when the brand's audience or category clearly needs it (for example children, luxury or technical buyers).
-- The palette has exactly 5 colours, each a 6 digit hex code like #1A2B3C, with roles Canvas, Primary, Secondary, Accent, Highlight. Adapt the playbook palette to suit the category and audience.
-- Write copy for this specific brand, not generic archetype copy.
-Reply with JSON only, in this exact shape:
-${KIT_SHAPE}`
-}
-
-async function groq(apiKey: string, system: string, user: string, temperature: number) {
+export async function generateKit(brief: string, apiKey: string) {
   const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       model: MODEL,
-      temperature,
+      temperature: 0.7,
       response_format: { type: 'json_object' },
       messages: [
-        { role: 'system', content: system },
-        { role: 'user', content: user },
+        { role: 'system', content: SYSTEM },
+        { role: 'user', content: `Brand brief: ${brief}` },
       ],
     }),
   })
@@ -88,26 +68,6 @@ async function groq(apiKey: string, system: string, user: string, temperature: n
   }
   const data = await res.json()
   return JSON.parse(data.choices[0].message.content)
-}
-
-export async function pickArchetype(brief: string, apiKey: string) {
-  for (let attempt = 0; attempt < 2; attempt++) {
-    const pick = await groq(apiKey, PICK_SYSTEM, `Brand brief: ${brief}`, 0)
-    const archetype = archetypes.find((a) => a.name.toLowerCase() === String(pick.archetype).trim().toLowerCase())
-    if (archetype) return { archetype, runnerUp: String(pick.runnerUp || ''), rationale: String(pick.rationale || '') }
-  }
-  throw new Error('Model did not return one of the 12 archetypes')
-}
-
-export async function generateKit(brief: string, apiKey: string) {
-  const pick = await pickArchetype(brief, apiKey)
-  const kit = await groq(apiKey, kitSystem(pick.archetype), `Brand brief: ${brief}`, 0.7)
-  return {
-    archetype: pick.archetype.name,
-    runnerUp: pick.runnerUp,
-    rationale: pick.rationale,
-    ...kit,
-  }
 }
 
 export default async function handler(req: any, res: any) {
