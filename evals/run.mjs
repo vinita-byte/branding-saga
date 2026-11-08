@@ -35,6 +35,7 @@ const ARCHETYPES = [
 const cases = JSON.parse(fs.readFileSync(path.join(here, 'cases.json'), 'utf8')).filter((c) => !ONLY || ONLY.has(c.id))
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+const DAILY_LIMIT = /per day|\(TPD\)|\(RPD\)/i
 
 // Retries rate limits and server errors with backoff. Honours Retry-After when present.
 async function withRetry(label, fn, tries = 6) {
@@ -43,7 +44,8 @@ async function withRetry(label, fn, tries = 6) {
     const res = await fn()
     if (res.ok) return res.json()
     const body = await res.text()
-    const retryable = res.status === 429 || res.status >= 500
+    // A daily quota won't clear with a short wait, so don't retry it.
+    const retryable = (res.status === 429 || res.status >= 500) && !DAILY_LIMIT.test(body)
     if (!retryable || attempt >= tries) throw new Error(`${label} failed (${res.status}): ${body.slice(0, 200)}`)
     const after = Number(res.headers.get('retry-after'))
     const delay = after > 0 ? after * 1000 + 500 : wait
@@ -173,9 +175,10 @@ async function judge(brief, kit) {
 // ---------- Run ----------
 
 const results = []
+let stoppedBy = null
 console.log(`Branding Saga evals: ${cases.length} cases x ${RUNS} runs against ${BASE}\n`)
 
-for (const c of cases) {
+caseLoop: for (const c of cases) {
   console.log(`#${c.id} ${c.prompt}  (expect ${c.expected})`)
   for (let run = 1; run <= RUNS; run++) {
     const r = { id: c.id, prompt: c.prompt, expected: c.expected, run, reasons: [] }
@@ -192,6 +195,12 @@ for (const c of cases) {
         r.reasons.push(`judge scored ${r.judge.overall}/5: ${r.judge.reason}`)
       }
     } catch (e) {
+      // Running out of daily quota says nothing about quality: stop instead of logging fake failures.
+      if (DAILY_LIMIT.test(String(e.message))) {
+        stoppedBy = 'Groq daily token limit reached'
+        console.log(`  run ${run}: not scored (${stoppedBy})`)
+        break caseLoop
+      }
       r.reasons.push(String(e.message || e))
     }
     r.pass = r.reasons.length === 0
@@ -205,7 +214,13 @@ for (const c of cases) {
 const passed = results.filter((r) => r.pass).length
 const failures = results.filter((r) => !r.pass)
 
-console.log(`\nPass rate: ${passed}/${results.length} (${((passed / results.length) * 100).toFixed(1)}%)`)
+const planned = cases.length * RUNS
+if (stoppedBy) {
+  console.log(`\nSTOPPED EARLY: ${stoppedBy}. ${planned - results.length} of ${planned} runs were not scored.`)
+  console.log('The pass rate below covers scored runs only. Rerun when the quota resets.')
+}
+const pct = results.length ? ((passed / results.length) * 100).toFixed(1) : '0.0'
+console.log(`\nPass rate: ${passed}/${results.length} (${pct}%)`)
 const byCase = cases.map((c) => {
   const rs = results.filter((r) => r.id === c.id)
   return `  #${c.id} ${c.expected.padEnd(9)} ${rs.filter((r) => r.pass).length}/${rs.length}`
@@ -223,6 +238,9 @@ if (failures.length) {
 const outDir = path.join(here, 'results')
 fs.mkdirSync(outDir, { recursive: true })
 const outFile = path.join(outDir, `${new Date().toISOString().replace(/[:.]/g, '-')}.json`)
-fs.writeFileSync(outFile, JSON.stringify({ base: BASE, runs: RUNS, passed, total: results.length, results }, null, 2))
+fs.writeFileSync(
+  outFile,
+  JSON.stringify({ base: BASE, runs: RUNS, planned, passed, total: results.length, stoppedBy, results }, null, 2),
+)
 console.log(`\nFull results: ${path.relative(process.cwd(), outFile)}`)
-process.exit(failures.length ? 1 : 0)
+process.exit(failures.length || stoppedBy ? 1 : 0)
