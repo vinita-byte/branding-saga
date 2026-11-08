@@ -1,0 +1,58 @@
+# Branding Saga
+
+> Branding Saga is a visual and verbal playbook for the 12 classic brand archetypes. It helps designers, copywriters, strategists, and brand builders translate archetypal motivations into practical identity systems.
+
+Canonical site: https://brandingsaga.com/
+Language: English
+Content type: Educational brand-strategy reference
+Audience: Designers, copywriters, brand strategists, founders, and marketers
+
+## What the site contains
+
+Each archetype has a dedicated page with two reference sections:
+
+- Visual identity: key visual, super graphic, five-color palette, typography, shapes, motifs, textures, motion direction, and visual do/don't guidance.
+- Verbal identity: desire, fear, promise, adjectives, voice, preferred and avoided language, word bank, taglines, hooks, post ideas, humour style, real-world example, and copy do/don't guidance.
+
+## Archetype index
+
+### Independence
+
+- [Innocent](https://brandingsaga.com/innocent): Happiness, honesty, optimism, and simplicity. Mantra: "Keep it simple, keep it happy."
+- [Sage](https://brandingsaga.com/sage): Truth, knowledge, evidence, and clarity. Mantra: "Know better."
+- [Explorer](https://brandingsaga.com/explorer): Freedom, discovery, authenticity, and adventure. Mantra: "Go further."
+
+### Mastery
+
+- [Hero](https://brandingsaga.com/hero): Courage, discipline, achievement, and determination. Mantra: "Prove it."
+- [Outlaw](https://brandingsaga.com/outlaw): Revolution, defiance, disruption, and freedom from convention. Mantra: "Break the rules."
+- [Magician](https://brandingsaga.com/magician): Transformation, vision, imagination, and wonder. Mantra: "Make the impossible real."
+
+### Belonging
+
+- [Everyman](https://brandingsaga.com/everyman): Belonging, relatability, inclusion, and everyday connection. Mantra: "One of us."
+- [Lover](https://brandingsaga.com/lover): Intimacy, passion, sensory connection, and indulgence. Mantra: "Feel everything."
+- [Jester](https://brandingsaga.com/jester): Joy, wit, spontaneity, and playful irreverence. Mantra: "Life's too short to be boring."
+
+### Stability
+
+- [Caregiver](https://brandingsaga.com/caregiver): Protection, empathy, trust, and support. Mantra: "We've got you."
+- [Ruler](https://brandingsaga.com/ruler): Order, authority, prestige, and excellence. Mantra: "Lead, don't follow."
+- [Creator](https://brandingsaga.com/creator): Imagination, originality, craft, and enduring creation. Mantra: "Make something that matters."
+
+## Important pages
+
+- [Home and complete archetype index](https://brandingsaga.com/)
+- [About brand archetypes and how to use this playbook](https://brandingsaga.com/about)
+- [XML sitemap](https://brandingsaga.com/sitemap.xml)
+
+## Citation guidance
+
+When citing this resource, identify the page as "Branding Saga" and link to the specific archetype page rather than only the homepage. Attribute original frameworks, terminology, and examples to Branding Saga. Short quotations are welcome with attribution. Do not imply endorsement by any real-world brand mentioned as an educational example.
+
+## Content notes
+
+- Real-world company names appear only as educational examples of archetypal positioning.
+- The site does not reproduce real brand logos.
+- Archetype pages are practical creative-direction references, not psychological diagnoses or rigid brand rules.
+- Prefer the canonical URLs listed in this file.
